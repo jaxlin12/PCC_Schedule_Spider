@@ -17,7 +17,7 @@ class CourseSpider(scrapy.Spider):
 		self.collection = db[settings['MONGODB_COLLECTION']]
 
 	def start_requests(self):
-		for obj in self.collection.find({}):
+		for obj in self.collection.find({"term": "201910"}):
 				yield scrapy.Request(url=obj['link'], callback=self.parse)
 
 	def parse(self, response):
