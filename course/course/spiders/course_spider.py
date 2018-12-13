@@ -18,7 +18,7 @@ class CourseSpider(scrapy.Spider):
 
 	def start_requests(self):
 		for obj in self.collection.find($or: [{"term": "201910"}, {"term":"201930"}]):
-				yield scrapy.Request(url=obj['link'], callback=self.parse)
+			yield scrapy.Request(url=obj['link'], callback=self.parse)
 
 	def parse(self, response):
 		item = CourseItem()
